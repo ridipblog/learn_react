@@ -9,10 +9,34 @@ export default function TextApp(props) {
   const [word, setWord] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [isStart, setIsStart] = useState(false);
+  const dummy_text_arr = props.dummyTextProps.split(" ");
+  var index = 0;
+  var current = 0;
+  var wrong = 0;
   const changeText = (event) => {
-    setText(event.target.value);
-    setChar(event.target.value.length);
-    var allText = event.target.value;
+    var letter = event.target.value;
+    if (props.dummyTextProps.length >= letter.length) {
+      var temp_word = "";
+      console.log(letter);
+      if (letter === " ") {
+        console.log(letter);
+        if (temp_word === dummy_text_arr[index]) {
+          current = current + 1;
+        } else {
+          wrong = wrong + 1;
+        }
+        console.log(temp_word);
+        temp_word = "";
+        index++;
+      } else {
+        temp_word = temp_word + letter;
+      }
+    }
+    console.log(current);
+    console.log(wrong);
+    setText(letter);
+    setChar(letter.length);
+    var allText = letter;
     const word_len = allText.split(" ");
     setWord(word_len.length);
   };
@@ -28,22 +52,23 @@ export default function TextApp(props) {
     setIsStart(false);
     setSeconds(0);
   };
-  //   Start Timer Functions
-
+  //    Timer Functions
   useEffect(() => {
     let timer;
     if (isStart) {
       timer = setInterval(() => {
         setSeconds((prev) => prev + 1);
       }, 1000);
+      if (seconds > 5) {
+        stopTimer();
+      }
     } else {
       clearInterval(timer);
-      console.log("Ok");
     }
     return () => {
       clearInterval(timer);
     };
-  }, [isStart]);
+  }, [isStart, seconds]);
   return (
     <>
       <DummyText dummyTextProps={props.dummyTextProps} />
