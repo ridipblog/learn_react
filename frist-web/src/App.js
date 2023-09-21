@@ -1,6 +1,15 @@
 // import logo from "./logo.svg";
 import "./App.css";
 import TextApp from "./components/TextApp/TextApp";
+import CompA from "./components/useContext/CompA";
+import UseCallBack from "./components/UseCallBack/UseCallBack";
+import UseMemo from "./components/UseMemo/UseMemo";
+import UseReducer from "./components/UseReducer/UseReducer";
+import UseReducerObject from "./components/UseReducer/UseReducerObject";
+import UseRefApp from "./components/UseRefApp/UseRefApp";
+import UseRefAppDom from "./components/UseRefApp/UseRefAppDom";
+import UseRefPrev from "./components/UseRefApp/UseRefPrev";
+import CustomHook from "./components/customHook/CustomHook";
 function App() {
   const TextAppProps = {
     title: "Text App",
@@ -11,6 +20,31 @@ function App() {
   return (
     <>
       <TextApp TextAppProps={TextAppProps} dummyTextProps={dummyText} />
+
+      {/* Use Context Api */}
+
+      <CompA />
+
+      {/* Use Ref Hook  */}
+      <UseRefApp />
+      <UseRefAppDom />
+      <UseRefPrev />
+
+      {/* Use Reducer Hook */}
+
+      <UseReducer />
+      <UseReducerObject />
+
+      {/* Use Callback Hooks */}
+
+      <UseCallBack />
+
+      {/* Use Memo Hook  */}
+      <UseMemo />
+
+      {/* Custom hook */}
+
+      <CustomHook />
     </>
   );
 }
