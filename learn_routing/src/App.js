@@ -9,7 +9,13 @@ import ErrorPage from './components/Route_1/ErrorPage';
 import RedirectPage from './components/Route_1/RedirectPage';
 import Params from './components/Route_1/Params';
 import SearchParams from './components/Route_1/SearchParams';
+import ProgramaticRoute from './components/Route_1/ProgramaticRoute';
+// Nested Routing
 
+import Course from './components/nested_routing/Course';
+import Java from './components/nested_routing/Java';
+import Python from './components/nested_routing/Python';
+import Javascript from './components/nested_routing/Javascript';
 function App() {
   return (
     <>
@@ -22,6 +28,14 @@ function App() {
           <Route exact path="/params/:productID" element={<Params />} />
           <Route exact path="/search_params" element={<SearchParams />} />
           <Route exact path="/redirect" element={<RedirectPage />} />
+          <Route exact path="/programatic_route" element={<ProgramaticRoute />} />
+
+          {/* Nested Routing  */}
+          <Route exact path="/course" element={<Course />}>
+            <Route exact path="java" element={<Java />} />
+            <Route exact path="python" element={<Python />} />
+            <Route exact path="javascript" element={<Javascript />} />
+          </Route>
           <Route exact path="/*" element={<ErrorPage />} />
         </Routes>
       </Router>

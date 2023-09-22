@@ -1,10 +1,9 @@
 import React from 'react'
-export default function Home() {
 
+export default function Python() {
     return (
         <div>
-            <h1>Home Page</h1>
-
+            <h1>Python Page</h1>
         </div>
     )
 }
